@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Project Name — Early Detection Innovation</title>
+  <meta name="description" content="A small project website showcasing our health innovation: what it is, how it works, and why it matters." />
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#121a33;
+      --muted:#9fb0d0;
+      --text:#eaf0ff;
+      --accent:#6ee7ff;
+      --accent2:#b8ff6e;
+      --line:rgba(255,255,255,.10);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius:18px;
+      --max: 1100px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(1200px 500px at 20% -10%, rgba(110,231,255,.22), transparent 60%),
+        radial-gradient(900px 420px at 80% 0%, rgba(184,255,110,.16), transparent 55%),
+        radial-gradient(900px 700px at 50% 120%, rgba(150,130,255,.10), transparent 60%),
+        var(--bg);
+      line-height:1.5;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:24px}
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,16,32,.65);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; gap:14px}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px}
+    .logo{
+      width:34px; height:34px; border-radius:12px;
+      background: linear-gradient(135deg, rgba(110,231,255,.95), rgba(184,255,110,.75));
+      box-shadow: var(--shadow);
+    }
+    .links{display:flex; flex-wrap:wrap; gap:14px; font-size:14px; color:var(--muted)}
+    .links a{padding:8px 10px; border-radius:12px}
+    .links a:hover{background:rgba(255,255,255,.06); color:var(--text)}
+    .cta{
+      display:flex; gap:10px; align-items:center;
+    }
+    .btn{
+      border:1px solid var(--line);
+      padding:10px 14px;
+      border-radius:14px;
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      font-weight:600;
+      box-shadow: 0 0 0 rgba(0,0,0,0);
+      transition:.2s ease;
+      cursor:pointer;
+    }
+    .btn:hover{transform: translateY(-1px); box-shadow: var(--shadow)}
+    .btn.primary{
+      border-color: rgba(110,231,255,.35);
+      background: linear-gradient(135deg, rgba(110,231,255,.22), rgba(184,255,110,.16));
+    }
+
+    /* hero */
+    .hero{padding:44px 0 10px}
+    .grid{
+      display:grid; gap:18px;
+      grid-template-columns: 1.15fr .85fr;
+      align-items:stretch;
+    }
+    @media (max-width: 900px){
+      .grid{grid-template-columns:1fr}
+      .links{display:none}
+    }
+    h1{
+      margin:0;
+      font-size: clamp(30px, 4vw, 52px);
+      line-height:1.05;
+      letter-spacing:-.6px;
+    }
+    .lead{color:var(--muted); font-size:16px; margin:14px 0 18px; max-width:62ch}
+    .pill-row{display:flex; flex-wrap:wrap; gap:10px; margin:18px 0 0}
+    .pill{
+      padding:8px 10px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      color:var(--muted);
+      font-size:13px;
+      background: rgba(255,255,255,.04);
+    }
+    .card{
+      background: rgba(18,26,51,.72);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:18px;
+    }
+    .stat{
+      display:grid; grid-template-columns: 1fr 1fr; gap:12px;
+    }
+    .stat .k{font-size:12px; color:var(--muted)}
+    .stat .v{font-size:22px; font-weight:800; letter-spacing:-.2px}
+    .divider{height:1px; background: var(--line); margin:14px 0}
+    .mini{font-size:12px; color:var(--muted)}
+    .badge{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:8px 10px; border-radius:14px;
+      border:1px solid rgba(110,231,255,.25);
+      background: rgba(110,231,255,.08);
+      color:var(--text);
+      font-weight:600;
+      font-size:13px;
+    }
+    .dot{width:8px; height:8px; border-radius:50%;
+      background: var(--accent);
+      box-shadow: 0 0 18px rgba(110,231,255,.65);
+    }
+
+    /* sections */
+    section{padding:18px 0}
+    .section-head{display:flex; align-items:flex-end; justify-content:space-between; gap:16px; margin:16px 0 10px}
+    h2{margin:0; font-size:20px; letter-spacing:-.2px}
+    .sub{margin:0; color:var(--muted); max-width:70ch; font-size:14px}
+    .cards3{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
+    @media (max-width: 900px){ .cards3{grid-template-columns: 1fr} }
+    .cards2{display:grid; grid-template-columns: repeat(2, 1fr); gap:14px}
+    @media (max-width: 900px){ .cards2{grid-template-columns: 1fr} }
+    .icon{
+      width:38px; height:38px; border-radius:14px;
+      display:grid; place-items:center;
+      background: rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      margin-bottom:10px;
+      font-size:18px;
+    }
+    .card h3{margin:6px 0 8px; font-size:16px}
+    .card p{margin:0; color:var(--muted); font-size:14px}
+    .list{margin:10px 0 0; padding-left:18px; color:var(--muted); font-size:14px}
+    .list li{margin:6px 0}
+
+    /* footer */
+    footer{
+      padding:28px 0 44px;
+      border-top:1px solid var(--line);
+      margin-top:24px;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* toast */
+    .toast{
+      position:fixed; left:50%; bottom:22px; transform:translateX(-50%);
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(18,26,51,.88);
+      color:var(--text);
+      box-shadow: var(--shadow);
+      display:none;
+      max-width: min(520px, calc(100vw - 40px));
+    }
+    .toast.show{display:block; animation: pop .18s ease-out}
+    @keyframes pop{from{transform:translateX(-50%) translateY(8px); opacity:.4}to{transform:translateX(-50%) translateY(0); opacity:1}}
+    code.inline{background:rgba(255,255,255,.08); padding:2px 6px; border-radius:10px; border:1px solid var(--line)}
+  </style>
+</head>
+
+<body>
+  <div class="nav">
+    <div class="wrap nav-inner">
+      <div class="brand">
+        <div class="logo"></div>
+        <span id="projectName">Project Name</span>
+      </div>
+
+      <div class="links">
+        <a href="#problem">Problem</a>
+        <a href="#solution">Solution</a>
+        <a href="#how">How it Works</a>
+        <a href="#impact">Impact</a>
+        <a href="#costs">Costs</a>
+        <a href="#team">Team</a>
+        <a href="#citations">Citations</a>
+      </div>
+
+      <div class="cta">
+        <button class="btn" id="copyLinkBtn" title="Copy share link">Copy link</button>
+        <a class="btn primary" href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <header class="hero">
+      <div class="grid">
+        <div class="card">
+          <span class="badge"><span class="dot"></span> Early detection, anywhere</span>
+          <h1 id="headline">A portable screening concept that helps detect risk earlier.</h1>
+          <p class="lead" id="tagline">
+            This site explains our innovation: what it is, how it works, and how it can improve quality of life while reducing healthcare costs.
+          </p>
+
+          <div class="pill-row">
+            <span class="pill">Non-invasive</span>
+            <span class="pill">Rapid screening</span>
+            <span class="pill">Decentralized access</span>
+            <span class="pill">Preventive care</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="stat">
+            <div>
+              <div class="k">Target use</div>
+              <div class="v">Community screening</div>
+            </div>
+            <div>
+              <div class="k">Format</div>
+              <div class="v">Portable device</div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="stat">
+            <div>
+              <div class="k">Goal</div>
+              <div class="v">Earlier intervention</div>
+            </div>
+            <div>
+              <div class="k">Value</div>
+              <div class="v">Lower downstream costs</div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <p class="mini">
+            Tip: Customize text quickly by editing the <code class="inline">CONFIG</code> object at the bottom of this file.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <section id="problem">
+      <div class="section-head">
+        <div>
+          <h2>Problem</h2>
+          <p class="sub">Why earlier detection matters — and why access is uneven.</p>
+        </div>
+      </div>
+
+      <div class="cards3">
+        <div class="card">
+          <div class="icon">🕒</div>
+          <h3>Late discovery</h3>
+          <p>Many serious conditions are found after symptoms appear, when treatment options are more limited and more expensive.</p>
+          <ul class="list">
+            <li>Delayed testing and referrals</li>
+            <li>High burden on specialty clinics</li>
+            <li>Lower survival odds when late-stage</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="icon">📍</div>
+          <h3>Centralized diagnostics</h3>
+          <p>Advanced imaging and specialist access often cluster in large hospitals—creating travel, scheduling, and cost barriers.</p>
+          <ul class="list">
+            <li>Rural & underserved gaps</li>
+            <li>Long wait times</li>
+            <li>Transportation and time off work</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="icon">💸</div>
+          <h3>Downstream cost spiral</h3>
+          <p>Late-stage treatment typically requires more intensive, longer-term care, increasing total cost and reducing quality of life.</p>
+          <ul class="list">
+            <li>More hospitalizations</li>
+            <li>More complex therapy plans</li>
+            <li>More caregiver burden</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="solution">
+      <div class="section-head">
+        <div>
+          <h2>Solution</h2>
+          <p class="sub">What our innovation is, and what it does.</p>
+        </div>
+      </div>
+
+      <div class="cards2">
+        <div class="card">
+          <div class="icon">🧪</div>
+          <h3>What it is</h3>
+          <p id="whatItIs">
+            A portable screening tool concept that collects a simple, non-invasive sample and analyzes it for risk signals that may warrant follow-up testing.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">✅</div>
+          <h3>What it does</h3>
+          <p id="whatItDoes">
+            Flags higher-risk cases earlier so clinicians can prioritize confirmatory diagnostics, while low-risk users avoid unnecessary invasive procedures.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="section-head">
+        <div>
+          <h2>How it Works</h2>
+          <p class="sub">A clear, judge-friendly workflow.</p>
+        </div>
+      </div>
+
+      <div class="cards3">
+        <div class="card">
+          <div class="icon">1️⃣</div>
+          <h3>Collect</h3>
+          <p id="step1">User provides a quick, non-invasive sample (ex: breath/airflow), guided by a standardized protocol.</p>
+        </div>
+        <div class="card">
+          <div class="icon">2️⃣</div>
+          <h3>Analyze</h3>
+          <p id="step2">Sensors + pattern analysis estimate risk by comparing signals to reference profiles.</p>
+        </div>
+        <div class="card">
+          <div class="icon">3️⃣</div>
+          <h3>Act</h3>
+          <p id="step3">High-risk results trigger referral pathways (imaging/labs). Low-risk results support monitoring and prevention.</p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:14px">
+        <h3 style="margin:0 0 6px">Where it fits in care</h3>
+        <p style="margin:0;color:var(--muted);font-size:14px" id="careFit">
+          Designed as a first-line screening layer that complements—not replaces—clinical diagnosis. It helps prioritize who needs confirmatory testing sooner.
+        </p>
+      </div>
+    </section>
+
+    <section id="impact">
+      <div class="section-head">
+        <div>
+          <h2>Quality of Life Impact</h2>
+          <p class="sub">How this can change the patient experience.</p>
+        </div>
+      </div>
+
+      <div class="cards3">
+        <div class="card">
+          <div class="icon">🫁</div>
+          <h3>Less invasive care</h3>
+          <p>Earlier flags can reduce the need for late-stage emergency interventions and aggressive treatments.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🧭</div>
+          <h3>Faster answers</h3>
+          <p>Rapid screening helps reduce weeks of uncertainty, enabling earlier planning and support.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🏡</div>
+          <h3>Access where people are</h3>
+          <p>Clinics, schools, and community centers can offer screening without requiring a major hospital visit.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="costs">
+      <div class="section-head">
+        <div>
+          <h2>Cost Reduction</h2>
+          <p class="sub">How earlier, decentralized screening can save money across the system.</p>
+        </div>
+      </div>
+
+      <div class="cards2">
+        <div class="card">
+          <div class="icon">📉</div>
+          <h3>Avoid expensive late-stage care</h3>
+          <p id="costPoint1">
+            Earlier detection can shift treatment toward less intensive care pathways, reducing hospital stays and complex multi-therapy regimens.
+          </p>
+          <ul class="list">
+            <li>Fewer emergency admissions</li>
+            <li>More treatment options earlier</li>
+            <li>Better resource allocation</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="icon">🧑‍⚕️</div>
+          <h3>Smarter use of diagnostics</h3>
+          <p id="costPoint2">
+            Screening can help prioritize high-risk patients for imaging/labs, while reducing unnecessary referrals for low-risk cases.
+          </p>
+          <ul class="list">
+            <li>Lower diagnostic bottlenecks</li>
+            <li>Reduced redundant testing</li>
+            <li>Shorter specialist queues</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:14px">
+        <h3 style="margin:0 0 6px">Implementation model</h3>
+        <p style="margin:0;color:var(--muted);font-size:14px" id="implementation">
+          Best deployed through community clinics + telehealth workflows, with clear escalation rules and follow-up tracking.
+        </p>
+      </div>
+    </section>
+
+    <section id="team">
+      <div class="section-head">
+        <div>
+          <h2>Team</h2>
+          <p class="sub">Put your names + roles here.</p>
+        </div>
+      </div>
+
+      <div class="cards3" id="teamCards">
+        <!-- filled by JS -->
+      </div>
+    </section>
+
+    <section id="citations">
+      <div class="section-head">
+        <div>
+          <h2>Citations</h2>
+          <p class="sub">Add the sources you used for stats/claims. Keep it judge-proof.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <ol class="list" id="citationList" style="margin-top:0">
+          <li>Replace this with your real citations (CDC, NIH, NCI, peer-reviewed journals, etc.).</li>
+          <li>Keep each citation consistent (APA/MLA) and include access dates for websites.</li>
+        </ol>
+        <p class="mini" style="margin-top:10px">
+          Pro move: cite <b>exact numbers</b> and tie them directly to your slide claims.
+        </p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-head">
+        <div>
+          <h2>Contact</h2>
+          <p class="sub">A simple way for judges/mentors to reach you.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <p style="margin:0;color:var(--muted);font-size:14px">
+          Email: <span id="contactEmail">yourteam@email.com</span> · School/Org: <span id="contactOrg">Your School</span>
+        </p>
+        <div class="pill-row" style="margin-top:14px">
+          <button class="btn primary" id="emailBtn">Copy email</button>
+          <button class="btn" id="pitchBtn">Copy 15s pitch</button>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap" style="padding:0">
+        <div>© <span id="year"></span> <span id="footerName">Project Name</span>. Built for presentations + judging.</div>
+        <div style="margin-top:6px">Made with HTML/CSS/JS — no frameworks needed.</div>
+      </div>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // 🔧 EDIT THIS CONFIG (fastest way to customize everything)
+    const CONFIG = {
+      projectName: "AeroScan (Example Name)",
+      headline: "Portable screening that helps catch risk earlier — before symptoms escalate.",
+      tagline:
+        "We’re building a non-invasive, rapid screening concept designed for community use. It helps prioritize follow-up diagnostics and supports preventive care.",
+      whatItIs:
+        "A portable screening tool concept that collects a quick, non-invasive sample (ex: breath) and analyzes it for risk signals using sensor patterns.",
+      whatItDoes:
+        "Provides an early risk flag to support clinician decision-making and faster referrals—helping allocate confirmatory testing to those who need it most.",
+      steps: {
+        step1: "User provides a standardized breath sample (60–90 seconds) with guided instructions.",
+        step2: "Sensors detect signal patterns; software compares them to reference profiles to estimate risk.",
+        step3: "High-risk results trigger follow-up workflows (imaging/labs); low-risk results support monitoring.",
+      },
+      careFit:
+        "This is a screening layer (not a diagnosis). It aims to improve triage and speed up confirmatory testing for higher-risk individuals.",
+      costs: {
+        point1:
+          "Earlier intervention can reduce expensive late-stage care (hospitalizations, complex treatment plans), improving outcomes and lowering total cost burden.",
+        point2:
+          "Risk-based screening can reduce unnecessary referrals and concentrate diagnostic capacity on patients most likely to benefit from immediate confirmatory tests.",
+        implementation:
+          "Deployed via community clinics + mobile units + telehealth follow-ups, with clear escalation criteria and longitudinal monitoring.",
+      },
+      team: [
+        { name: "Your Name", role: "Research & Design" },
+        { name: "Teammate Name", role: "Data & Validation" },
+        { name: "Teammate Name", role: "Engineering & Prototyping" },
+      ],
+      citations: [
+        "National Cancer Institute. (Year). Title of page/article. Accessed Month Day, Year.",
+        "CDC. (Year). Relevant statistic page. Accessed Month Day, Year.",
+      ],
+      contact: {
+        email: "yourteam@email.com",
+        org: "Your School / Chapter",
+        pitch15s:
+          "We built a portable, non-invasive screening concept that can be used in community settings to flag higher-risk cases earlier—helping clinicians prioritize follow-up tests and potentially reducing late-stage care costs.",
+      }
+    };
+
+    // ---------- wiring ----------
+    const $ = (id) => document.getElementById(id);
+    const toast = (msg) => {
+      const t = $("toast");
+      t.textContent = msg;
+      t.classList.add("show");
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(()=>t.classList.remove("show"), 1800);
+    };
+    const copy = async (text, okMsg="Copied!") => {
+      try{
+        await navigator.clipboard.writeText(text);
+        toast(okMsg);
+      }catch(e){
+        // fallback
+        const ta = document.createElement("textarea");
+        ta.value = text; document.body.appendChild(ta);
+        ta.select(); document.execCommand("copy");
+        document.body.removeChild(ta);
+        toast(okMsg);
+      }
+    };
+
+    $("projectName").textContent = CONFIG.projectName;
+    $("footerName").textContent = CONFIG.projectName;
+    $("headline").textContent = CONFIG.headline;
+    $("tagline").textContent = CONFIG.tagline;
+    $("whatItIs").textContent = CONFIG.whatItIs;
+    $("whatItDoes").textContent = CONFIG.whatItDoes;
+
+    $("step1").textContent = CONFIG.steps.step1;
+    $("step2").textContent = CONFIG.steps.step2;
+    $("step3").textContent = CONFIG.steps.step3;
+    $("careFit").textContent = CONFIG.careFit;
+
+    $("costPoint1").textContent = CONFIG.costs.point1;
+    $("costPoint2").textContent = CONFIG.costs.point2;
+    $("implementation").textContent = CONFIG.costs.implementation;
+
+    $("contactEmail").textContent = CONFIG.contact.email;
+    $("contactOrg").textContent = CONFIG.contact.org;
+
+    // Team cards
+    const teamRoot = $("teamCards");
+    teamRoot.innerHTML = CONFIG.team.map(m => `
+      <div class="card">
+        <div class="icon">👤</div>
+        <h3>${m.name}</h3>
+        <p>${m.role}</p>
+      </div>
+    `).join("");
+
+    // Citation list
+    const cite = $("citationList");
+    cite.innerHTML = CONFIG.citations.map(c => `<li>${c}</li>`).join("");
+
+    $("year").textContent = new Date().getFullYear();
+
+    // Buttons
+    $("copyLinkBtn").addEventListener("click", () => copy(location.href, "Link copied!"));
+    $("emailBtn").addEventListener("click", () => copy(CONFIG.contact.email, "Email copied!"));
+    $("pitchBtn").addEventListener("click", () => copy(CONFIG.contact.pitch15s, "Pitch copied!"));
+  </script>
+</body>
+</html>
