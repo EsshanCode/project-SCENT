@@ -3,55 +3,63 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Project Name — Early Detection Innovation</title>
-  <meta name="description" content="A small project website showcasing our health innovation: what it is, how it works, and why it matters." />
+  <title>SCENT — Early Detection Innovation</title>
+  <meta name="description" content="SCENT: Sensor-based Cancer Exhaled-breath Nanoparticle Technology — a non-invasive screening concept for earlier risk detection." />
+
   <style>
     :root{
-      --bg:#0b1020;
-      --card:#121a33;
-      --muted:#9fb0d0;
-      --text:#eaf0ff;
-      --accent:#6ee7ff;
-      --accent2:#b8ff6e;
-      --line:rgba(255,255,255,.10);
+      --bg:#07120d;                /* slightly greener dark */
+      --card:#0f1f18;              /* green-tinted card base */
+      --muted:#b7c7c1;             /* softer white-gray */
+      --text:#f4fff9;              /* more white */
+      --accent:#7CFFB2;            /* green accent */
+      --accent2:#6ee7ff;           /* hint of blue for contrast */
+      --line:rgba(244,255,249,.14);
       --shadow: 0 10px 30px rgba(0,0,0,.35);
       --radius:18px;
       --max: 1100px;
     }
+
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
+
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color:var(--text);
       background:
-        radial-gradient(1200px 500px at 20% -10%, rgba(110,231,255,.22), transparent 60%),
-        radial-gradient(900px 420px at 80% 0%, rgba(184,255,110,.16), transparent 55%),
-        radial-gradient(900px 700px at 50% 120%, rgba(150,130,255,.10), transparent 60%),
+        radial-gradient(1200px 500px at 15% -10%, rgba(124,255,178,.18), transparent 60%),
+        radial-gradient(900px 420px at 85% 0%, rgba(110,231,255,.10), transparent 55%),
+        radial-gradient(900px 700px at 50% 120%, rgba(124,255,178,.10), transparent 60%),
         var(--bg);
       line-height:1.5;
     }
+
     a{color:inherit; text-decoration:none}
     .wrap{max-width:var(--max); margin:0 auto; padding:24px}
+
     .nav{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
-      background: rgba(11,16,32,.65);
+      background: rgba(7,18,13,.70);
       border-bottom:1px solid var(--line);
     }
+
     .nav-inner{display:flex; align-items:center; justify-content:space-between; gap:14px}
     .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px}
+
     .logo{
       width:34px; height:34px; border-radius:12px;
-      background: linear-gradient(135deg, rgba(110,231,255,.95), rgba(184,255,110,.75));
+      background: linear-gradient(135deg, rgba(124,255,178,.95), rgba(244,255,249,.65));
       box-shadow: var(--shadow);
     }
+
     .links{display:flex; flex-wrap:wrap; gap:14px; font-size:14px; color:var(--muted)}
     .links a{padding:8px 10px; border-radius:12px}
     .links a:hover{background:rgba(255,255,255,.06); color:var(--text)}
-    .cta{
-      display:flex; gap:10px; align-items:center;
-    }
+
+    .cta{display:flex; gap:10px; align-items:center;}
+
     .btn{
       border:1px solid var(--line);
       padding:10px 14px;
@@ -65,8 +73,8 @@
     }
     .btn:hover{transform: translateY(-1px); box-shadow: var(--shadow)}
     .btn.primary{
-      border-color: rgba(110,231,255,.35);
-      background: linear-gradient(135deg, rgba(110,231,255,.22), rgba(184,255,110,.16));
+      border-color: rgba(124,255,178,.45);
+      background: linear-gradient(135deg, rgba(124,255,178,.20), rgba(244,255,249,.10));
     }
 
     /* hero */
@@ -80,6 +88,7 @@
       .grid{grid-template-columns:1fr}
       .links{display:none}
     }
+
     h1{
       margin:0;
       font-size: clamp(30px, 4vw, 52px);
@@ -87,6 +96,7 @@
       letter-spacing:-.6px;
     }
     .lead{color:var(--muted); font-size:16px; margin:14px 0 18px; max-width:62ch}
+
     .pill-row{display:flex; flex-wrap:wrap; gap:10px; margin:18px 0 0}
     .pill{
       padding:8px 10px;
@@ -96,13 +106,15 @@
       font-size:13px;
       background: rgba(255,255,255,.04);
     }
+
     .card{
-      background: rgba(18,26,51,.72);
+      background: rgba(15,31,24,.78);
       border:1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding:18px;
     }
+
     .stat{
       display:grid; grid-template-columns: 1fr 1fr; gap:12px;
     }
@@ -110,18 +122,20 @@
     .stat .v{font-size:22px; font-weight:800; letter-spacing:-.2px}
     .divider{height:1px; background: var(--line); margin:14px 0}
     .mini{font-size:12px; color:var(--muted)}
+
     .badge{
       display:inline-flex; gap:8px; align-items:center;
       padding:8px 10px; border-radius:14px;
-      border:1px solid rgba(110,231,255,.25);
-      background: rgba(110,231,255,.08);
+      border:1px solid rgba(124,255,178,.30);
+      background: rgba(124,255,178,.10);
       color:var(--text);
       font-weight:600;
       font-size:13px;
     }
-    .dot{width:8px; height:8px; border-radius:50%;
+    .dot{
+      width:8px; height:8px; border-radius:50%;
       background: var(--accent);
-      box-shadow: 0 0 18px rgba(110,231,255,.65);
+      box-shadow: 0 0 18px rgba(124,255,178,.65);
     }
 
     /* sections */
@@ -129,10 +143,17 @@
     .section-head{display:flex; align-items:flex-end; justify-content:space-between; gap:16px; margin:16px 0 10px}
     h2{margin:0; font-size:20px; letter-spacing:-.2px}
     .sub{margin:0; color:var(--muted); max-width:70ch; font-size:14px}
-    .cards3{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
+
+    .cards3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
     @media (max-width: 900px){ .cards3{grid-template-columns: 1fr} }
+
     .cards2{display:grid; grid-template-columns: repeat(2, 1fr); gap:14px}
     @media (max-width: 900px){ .cards2{grid-template-columns: 1fr} }
+
     .icon{
       width:38px; height:38px; border-radius:14px;
       display:grid; place-items:center;
@@ -145,6 +166,19 @@
     .card p{margin:0; color:var(--muted); font-size:14px}
     .list{margin:10px 0 0; padding-left:18px; color:var(--muted); font-size:14px}
     .list li{margin:6px 0}
+
+    /* Team grid improvements */
+    #teamCards.cards3{
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      justify-content:center;
+    }
+    /* If there are exactly 2 team cards, make them centered + balanced */
+    #teamCards.two{
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    #teamCards .card{ text-align:center; }
+    #teamCards .icon{ margin-left:auto; margin-right:auto; }
 
     /* footer */
     footer{
@@ -161,14 +195,17 @@
       padding:10px 12px;
       border-radius:14px;
       border:1px solid var(--line);
-      background: rgba(18,26,51,.88);
+      background: rgba(15,31,24,.92);
       color:var(--text);
       box-shadow: var(--shadow);
       display:none;
       max-width: min(520px, calc(100vw - 40px));
     }
     .toast.show{display:block; animation: pop .18s ease-out}
-    @keyframes pop{from{transform:translateX(-50%) translateY(8px); opacity:.4}to{transform:translateX(-50%) translateY(0); opacity:1}}
+    @keyframes pop{
+      from{transform:translateX(-50%) translateY(8px); opacity:.4}
+      to{transform:translateX(-50%) translateY(0); opacity:1}
+    }
     code.inline{background:rgba(255,255,255,.08); padding:2px 6px; border-radius:10px; border:1px solid var(--line)}
   </style>
 </head>
@@ -189,11 +226,11 @@
         <a href="#costs">Costs</a>
         <a href="#team">Team</a>
         <a href="#citations">Citations</a>
+        <a href="#contact">Contact</a>
       </div>
 
       <div class="cta">
-        <button class="btn" id="copyLinkBtn" title="Copy share link">Copy link</button>
-        <a class="btn primary" href="#contact">Contact</a>
+        <button class="btn primary" id="copyLinkBtn" title="Copy share link">Copy link</button>
       </div>
     </div>
   </div>
@@ -244,7 +281,8 @@
           <div class="divider"></div>
 
           <p class="mini">
-            SCENT was inspired by multiple deaths in the creators' families from lung cancer detected too late. Nobody should have to go through that. That's why we built SCENT, to bring actionable change to the world around us.
+            SCENT was inspired by multiple deaths in the creators' families from lung cancer detected too late. Nobody should have to go through that.
+            That's why we built SCENT — to bring actionable change to the world around us.
           </p>
         </div>
       </div>
@@ -284,7 +322,7 @@
         <div class="card">
           <div class="icon">💸</div>
           <h3>Downstream cost spiral</h3>
-          <p>Late-stage treatment typically requires more intensive, longer-term care, increasing total cost and reducing quality of life.</p>
+          <p>Late-stage treatment typically requires more intensive care, increasing total cost and reducing quality of life.</p>
           <ul class="list">
             <li>More hospitalizations</li>
             <li>More complex therapy plans</li>
@@ -429,7 +467,7 @@
       <div class="section-head">
         <div>
           <h2>Team</h2>
-          <p class="sub">Put your names + roles here.</p>
+          <p class="sub">Meet the creators behind SCENT.</p>
         </div>
       </div>
 
@@ -514,7 +552,7 @@
       },
       team: [
         { name: "Tharun Nambi", role: "Research & Design" },
-        { name: "Esshan", role: "Engineering & Building" },
+        { name: "Esshan Kharat", role: "Engineering & Building" },
       ],
       citations: [
         "National Cancer Institute. (Year). Title of page/article. Accessed Month Day, Year.",
@@ -530,6 +568,7 @@
 
     // ---------- wiring ----------
     const $ = (id) => document.getElementById(id);
+
     const toast = (msg) => {
       const t = $("toast");
       t.textContent = msg;
@@ -537,6 +576,7 @@
       clearTimeout(window.__toastTimer);
       window.__toastTimer = setTimeout(()=>t.classList.remove("show"), 1800);
     };
+
     const copy = async (text, okMsg="Copied!") => {
       try{
         await navigator.clipboard.writeText(text);
@@ -570,8 +610,10 @@
     $("contactEmail").textContent = CONFIG.contact.email;
     $("contactOrg").textContent = CONFIG.contact.org;
 
-    // Team cards
+    // Team cards (and center if there are only 2)
     const teamRoot = $("teamCards");
+    if (CONFIG.team.length === 2) teamRoot.classList.add("two");
+
     teamRoot.innerHTML = CONFIG.team.map(m => `
       <div class="card">
         <div class="icon">👤</div>
